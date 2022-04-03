@@ -7,6 +7,7 @@ public class Person {
 	public Person(String firstName, String lastName, String address, String city, String state, String zip,
 			String phone) {
 		super();
+
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -14,6 +15,9 @@ public class Person {
 		this.state = state;
 		this.zip = zip;
 		this.phone = phone;
+	}
+
+	public Person() {
 	}
 
 	public String getFirstName() {
@@ -74,8 +78,10 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city=" + city
-				+ ", state=" + state + ", zip=" + zip + ", phone=" + phone + "]";
+		System.out.println(" \t  UPDATED LIST ");
+		System.out.println("----------------------------------------------");
+		return " firstName = " + firstName + "\n lastName = " + lastName + "\n address = " + address + "\n city = "
+				+ city + "\n state = " + state + "\n zip = " + zip + "\n phone = " + phone;
 	}
 
 }
