@@ -8,7 +8,18 @@ public class Operations {
 
 	// Add method
 	public void addRecord() {
+
+		int i = 0;
 		String firstName, lastName, address, city, state, zip, phone;
+		while (i == 0) {
+			System.out.print("Enter First Name : ");
+			firstName = Utility.getStringValue();
+			if (checkExists(firstName)) {
+				System.out.println("Person Name Already Exists!!\nPlease enter different name...");
+			} else {
+				i = 1;
+			}
+		}
 
 		System.out.println("Enter First Name :");
 		firstName = Utility.getStringValue();
@@ -96,5 +107,19 @@ public class Operations {
 		System.out.print("\nEnter #ID to delete Contact : ");
 		id = Utility.getIntValue();
 		personList.remove(id);
+	}
+
+	public boolean checkExists(String firstName) {
+		int flag = 0;
+		for (Person p : personList) {
+			if (p.getFirstName().equals(firstName)) {
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 1) {
+			return true;
+		}
+		return false;
 	}
 }
