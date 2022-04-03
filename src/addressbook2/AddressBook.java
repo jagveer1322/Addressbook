@@ -6,9 +6,10 @@ public class AddressBook {
 		int choice;
 		do {
 			System.out.println("Welcome To Address Book");
-			System.out.println("\t   MENU");
+			System.out.println("\t   MENU  ");
 			System.out.println("---------------------------------------");
-			System.out.println("1 : DISPLAY RECORDS \n2 : ADD  PERSON \n3 : EDIT PERSON \n4 : EXIT\n");
+			System.out
+					.println("1 : DISPLAY RECORDS \n2 : ADD  PERSON \n3 : EDIT PERSON \n4 : DELETE RECORD \n5 : Exit");
 			System.out.println("Enter Choice");
 			choice = Utility.getIntValue();
 			switch (choice) {
@@ -17,14 +18,15 @@ public class AddressBook {
 				break;
 			case 2:
 				operation.addRecord();
-
 				break;
 			case 3:
 				operation.editRecord();
 				break;
 			case 4:
-				System.out.println("BYE");
+				operation.deleteRecord();
 				break;
+			case 5:
+				System.out.println("BYE");
 			default:
 				System.out.println("Enter correct choice");
 

@@ -88,4 +88,13 @@ public class Operations {
 		}
 	}
 
+	public void deleteRecord() {
+		int id;
+		for (Person show : personList) {
+			System.out.println("ID: #" + personList.indexOf(show) + " : " + show);
+		}
+		System.out.print("\nEnter #ID to delete Contact : ");
+		id = Utility.getIntValue();
+		personList.remove(id);
+	}
 }
