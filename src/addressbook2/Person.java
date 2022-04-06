@@ -83,9 +83,33 @@ public class Person {
 		public int compare(Person p1, Person p2) {
 			String firstName1 = p1.getFirstName();
 			String firstName2 = p2.getFirstName();
-			;
-			// ascending order
 			return firstName1.compareTo(firstName2);
+		}
+	};
+	public static Comparator<Person> citySorting = new Comparator<Person>() {
+		@Override
+		public int compare(Person p1, Person p2) {
+			String city1 = p1.getCity();
+			String city2 = p2.getCity();
+			return city1.compareToIgnoreCase(city2);
+		}
+	};
+	public static Comparator<Person> stateSorting = new Comparator<Person>() {
+		@Override
+		public int compare(Person p1, Person p2) {
+			String state1 = p1.getState();
+			String state2 = p2.getState();
+			return state1.compareToIgnoreCase(state2);
+		}
+	};
+
+	public static Comparator<Person> zipSorting = new Comparator<Person>() {
+		@Override
+		public int compare(Person p1, Person p2) {
+			String zip1 = p1.getZip();
+			String zip2 = p2.getZip();
+
+			return zip1.compareToIgnoreCase(zip2);
 		}
 	};
 

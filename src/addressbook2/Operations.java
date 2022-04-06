@@ -124,7 +124,26 @@ public class Operations {
 	}
 
 	public void sortRecords() {
-		Sort.sortByName(personList);
-
+		System.out
+				.println("Sort By...\n" + "1: First Name\n" + "2: City\n" + "3: State\n" + "4: Zip Code\n" + "5: Back");
+		int choice = Utility.getIntValue();
+		switch (choice) {
+		case 1:
+			Sort.sortByName(personList);
+			break;
+		case 2:
+			Sort.sortByZip(personList);
+			break;
+		case 3:
+			Sort.sortByState(personList);
+			break;
+		case 4:
+			Sort.sortByZip(personList);
+			break;
+		case 5:
+			return;
+		default:
+			System.out.println("Please Enter Valid Option...");
+		}
 	}
 }
