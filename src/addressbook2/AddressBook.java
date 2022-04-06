@@ -8,8 +8,8 @@ public class AddressBook {
 			System.out.println("Welcome To Address Book");
 			System.out.println("\t   MENU  ");
 			System.out.println("---------------------------------------");
-			System.out
-					.println("1 : DISPLAY RECORDS \n2 : ADD  PERSON \n3 : EDIT PERSON \n4 : DELETE RECORD \n5 : Exit");
+			System.out.println(
+					"1 : DISPLAY RECORDS \n2 : ADD  PERSON \n3 : EDIT PERSON \n4 : DELETE RECORD \n5 : SORT RECORDS \\n6 : Exit");
 			System.out.println("Enter Choice");
 			choice = Utility.getIntValue();
 			switch (choice) {
@@ -26,11 +26,13 @@ public class AddressBook {
 				operation.deleteRecord();
 				break;
 			case 5:
+				operation.sortRecords();
+			case 6:
 				System.out.println("BYE");
 			default:
 				System.out.println("Enter correct choice");
 
 			}
-		} while (choice != 4);
+		} while (choice != 6);
 	}
 }

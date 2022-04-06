@@ -122,4 +122,9 @@ public class Operations {
 		}
 		return false;
 	}
+
+	public void sortRecords() {
+		Sort.sortByName(personList);
+
+	}
 }
