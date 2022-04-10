@@ -1,7 +1,7 @@
 package addressbook2;
 
 public class AddressBook {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws AddressBookException {
 		Operations operation = new Operations();
 		int choice;
 		do {
@@ -9,7 +9,7 @@ public class AddressBook {
 			System.out.println("\t   MENU  ");
 			System.out.println("---------------------------------------");
 			System.out.println(
-					"1 : DISPLAY RECORDS \n2 : ADD  PERSON \n3 : EDIT PERSON \n4 : DELETE RECORD \n5 : SORT RECORDS \n6 : Exit");
+					"1 : DISPLAY RECORDS \n2 : ADD  PERSON \n3 : EDIT PERSON \n4 : DELETE RECORD \n5 : SORT RECORDS \n6 : Person By City and State \n7 : Search \n8 : Exit");
 			System.out.println("Enter Choice");
 			choice = Utility.getIntValue();
 			switch (choice) {
@@ -29,11 +29,18 @@ public class AddressBook {
 				operation.sortRecords();
 				break;
 			case 6:
+				operation.viewByCityAndState();
+				break;
+			case 7:
+				operation.searchByCityState();
+				break;
+			case 8:
 				System.out.println("BYE");
+				break;
 			default:
 				System.out.println("Enter correct choice");
 
 			}
-		} while (choice != 6);
+		} while (choice != 7);
 	}
 }

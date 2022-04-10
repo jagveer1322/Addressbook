@@ -51,52 +51,62 @@ public class Operations {
 		}
 	}
 
-	public void editRecord() {
-		int id, choice, i = 0;
-		String firstName, lastName, address, city, state, phone, zip;
-		for (Person person : personList) {
-			System.out.println("ID: #" + personList.indexOf(person) + " : " + person);
-		}
-		System.out.print("\nEnter #ID to Edit Contact : ");
-		id = Utility.getIntValue();
-		while (i == 0) {
-			System.out.println("What You Want to edit...\n" + "\t1: Address\n" + "\t2: city\n" + "\t3: State\n"
-					+ "\t4: Phone\n" + "\t5: Zip Code\n" + "\t6. Save And Exit\n");
-			choice = Utility.getIntValue();
-			switch (choice) {
-			case 1:
-				System.out.print("Enter new Address : ");
-				address = Utility.getStringValue();
-				personList.get(id).setAddress(address);
-				break;
-			case 2:
-				System.out.print("Enter new City : ");
-				city = Utility.getStringValue();
-				personList.get(id).setCity(city);
-				break;
-			case 3:
-				System.out.print("Enter new State : ");
-				state = Utility.getStringValue();
-				personList.get(id).setState(state);
-				break;
-			case 4:
-				System.out.print("Enter new Phone : ");
-				phone = Utility.getStringValue();
-				personList.get(id).setPhone(phone);
-				break;
-			case 5:
-				System.out.print("Enter new Zip Code : ");
-				zip = Utility.getStringValue();
-				personList.get(id).setZip(zip);
-				break;
-			case 6:
-				i = 1;
-				break;
-			default:
-				System.out.println("Please Enter Valid Option");
+	public void editRecord() throws AddressBookException {
+		int id, i = 0;
+		String address, city, state, phone, zip;
+		try {
+			if (personList.isEmpty()) {
+				System.out.println("No Records To Edit!!!");
+			} else {
+				for (Person person : personList) {
+					System.out.println("ID: #" + personList.indexOf(person) + " : " + person);
+				}
+				System.out.print("\nEnter #ID to Edit Contact : ");
+				id = Utility.getIntValue();
+				System.out.println(personList.get(id));
+				while (i == 0) {
+					System.out.println("What You Want to edit...\n" + "\t1: Address\n" + "\t2: city\n" + "\t3: State\n"
+							+ "\t4: Phone\n" + "\t5: Zip Code\n" + "\t6. Save And Exit\n");
+					int choice = Utility.getIntValue();
+					switch (choice) {
+					case 1:
+						System.out.print("Enter new Address : ");
+						address = Utility.getStringValue();
+						personList.get(id).setAddress(address);
+						break;
+					case 2:
+						System.out.print("Enter new City : ");
+						city = Utility.getStringValue();
+						personList.get(id).setCity(city);
+						break;
+					case 3:
+						System.out.print("Enter new State : ");
+						state = Utility.getStringValue();
+						personList.get(id).setState(state);
+						break;
+					case 4:
+						System.out.print("Enter new Phone : ");
+						phone = Utility.getStringValue();
+						personList.get(id).setPhone(phone);
+						break;
+					case 5:
+						System.out.print("Enter new Zip Code : ");
+						zip = Utility.getStringValue();
+						personList.get(id).setZip(zip);
+						break;
+					case 6:
+						i = 1;
+						break;
+					default:
+						System.out.println("Please Enter Valid Option");
+					}
+					System.out.println(personList.get(id));
+				}
 			}
-			System.out.println(personList.get(id));
+		} catch (IndexOutOfBoundsException e) {
+			throw new AddressBookException("Entered Wrong #ID", AddressBookException.exceptionType.ENTERED_WRONG_ID);
 		}
+
 	}
 
 	public void deleteRecord() {
@@ -145,5 +155,27 @@ public class Operations {
 		default:
 			System.out.println("Please Enter Valid Option...");
 		}
+	}
+
+	public void searchInRecords() {
+		int i = 0;
+		while (i == 0) {
+			System.out.println("1. Search By City\n" + "2. Search By State\n" + "3. Back\n" + "Choose Your Option");
+			int choice = Utility.getIntValue();
+			switch (choice) {
+			case 1:
+				Sort.searchByCity(personList);
+				break;
+			case 2:
+				Sort.searchByState(personList);
+				break;
+			case 3:
+				i = 1;
+				break;
+			default:
+				System.out.println("Please Enter Correct Option...");
+			}
+		}
+
 	}
 }
