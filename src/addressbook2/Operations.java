@@ -1,6 +1,8 @@
 package addressbook2;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Operations {
@@ -157,25 +159,51 @@ public class Operations {
 		}
 	}
 
-	public void searchInRecords() {
-		int i = 0;
-		while (i == 0) {
-			System.out.println("1. Search By City\n" + "2. Search By State\n" + "3. Back\n" + "Choose Your Option");
-			int choice = Utility.getIntValue();
-			switch (choice) {
-			case 1:
-				Sort.searchByCity(personList);
-				break;
-			case 2:
-				Sort.searchByState(personList);
-				break;
-			case 3:
-				i = 1;
-				break;
-			default:
-				System.out.println("Please Enter Correct Option...");
-			}
+	public void searchByCityState() {
+		int choice = 0;
+		System.out.println("Search By\n" + "1: City\n" + "2: State\n" + "3: back");
+		choice = Utility.getIntValue();
+		switch (choice) {
+		case 1:
+			Search.searchByCity(personList);
+			break;
+		case 2:
+			break;
+		case 3:
+			return;
+		default:
+			System.out.println("Enter Valid Option");
 		}
-
 	}
+
+	// This Method will View Person by City and State
+	public void viewByCityAndState() {
+		Dictionary<String, String> cityDict = createCityDict();
+		Dictionary<String, String> stateDict = createStateDict();
+		final String city, state;
+		System.out.println("Enter City");
+		city = Utility.getStringValue();
+		System.out.println("Enter State");
+		state = Utility.getStringValue();
+		Search.searchByCityAndState(cityDict, stateDict);
+	} // End of viewByCityAndState() Method
+
+//	    Create City Dictionary
+	public Dictionary<String, String> createCityDict() {
+		Dictionary<String, String> cityDict = new Hashtable<String, String>();
+		for (Person person : personList) {
+			cityDict.put(person.getFirstName(), person.getCity());
+		}
+		return cityDict;
+	}
+
+//	    Create State Dictionary
+	public Dictionary<String, String> createStateDict() {
+		Dictionary<String, String> stateDict = new Hashtable<String, String>();
+		for (Person person : personList) {
+			stateDict.put(person.getFirstName(), person.getState());
+		}
+		return stateDict;
+	}
+
 }
